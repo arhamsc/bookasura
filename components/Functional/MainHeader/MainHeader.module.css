@@ -1,0 +1,45 @@
+.header {
+  padding-top: 1rem;
+}
+
+.logo__div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.icon:hover {
+  transition: transform 400ms;
+  transform: scale(1.1) rotate(10deg);
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.active__link {
+  border-bottom: 1px solid #283618;
+}
+
+.navbar ul {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.navbar ul li {
+  font-size: .9rem;
+  font-weight: 300;
+  padding: 0 1rem .3rem 1rem;
+}
+
+.navbar li:hover {
+  transition: border-bottom 450ms ease-out ;
+  border-bottom: 1px solid #283618;
+}

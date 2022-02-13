@@ -1,0 +1,32 @@
+.product__card {
+  max-width: 10rem;
+}
+
+.product__image {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 12rem;
+}
+
+.product__image img {
+  width: 10rem;
+  height: 12rem;
+  padding: 0;
+  margin: 0;
+  border-top-left-radius: var(--img-radius);
+  border-top-right-radius: var(--img-radius);
+}
+
+.product__details {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0;
+  background-color: #f5eaac;
+  border-bottom-left-radius: var(--img-radius);
+  border-bottom-right-radius: var(--img-radius);
+}
+
+.product__card p:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}
