@@ -1,0 +1,11 @@
+.product__showcase__cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.product__showcase__row p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

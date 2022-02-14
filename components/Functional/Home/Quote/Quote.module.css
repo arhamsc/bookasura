@@ -1,0 +1,20 @@
+.quote {
+  background-image: var(--linear-grad);
+  position: absolute;
+  left: 0;
+  text-align: center;
+  color: #413f3f;
+  margin: 2rem 0;
+}
+
+.quote figure {
+  max-width: 60%;
+  margin: 1rem auto;
+  padding: 2rem 0;
+}
+
+.quote q {
+  font-size: 1.5rem;
+  font-weight: 500;
+  max-width: 60%;
+}

@@ -1,18 +1,29 @@
 :root {
   --img-radius: .5rem;
+  --linear-grad: linear-gradient(45deg, #cdf8ba, #e9f79a);
 }
-
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Roboto;
+  font-family: 'Nunito';
+  color: #5a5959;
   background-color: #FEFAE0;
+}
+
+
+
+main {
+  margin: 0 5rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
 
 

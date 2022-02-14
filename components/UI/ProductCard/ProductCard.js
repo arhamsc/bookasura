@@ -1,23 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
 import React from 'react';
 
 import styles from './ProductCard.module.css';
 
-const ProductCard = () => {
+const ProductCard = ({itemName, imageUrl, price}) => {
   return (
     <section className={styles.product__card}>
       <div className={styles.product__image}>
         <img
           src={
-            'https://i.ibb.co/xD99JyP/madalyn-cox-Vk-GGIZul-OE0-unsplash.jpg'
+            imageUrl
           }
-          alt={'BookImage'}
+          alt={itemName}
         />
       </div>
       <div className={styles.product__details}>
-        <p>Harry Potter</p>
-        <p>$20</p>
+        <p>{itemName}</p>
+        <p> &#x20B9;{price} INR</p>
       </div>
     </section>
   );

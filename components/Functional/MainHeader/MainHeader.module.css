@@ -1,5 +1,11 @@
 .header {
   padding-top: 1rem;
+  background-color: #FEFAE0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .logo__div {
@@ -31,6 +37,7 @@
   list-style: none;
   padding: 0;
   justify-content: center;
+   z-index: 10;
 }
 
 .navbar ul li {
