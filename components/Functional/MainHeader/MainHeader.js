@@ -8,11 +8,11 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import Image from 'next/image';
 import Logo from '../../../public/bookasura_logo.png';
 
-const MainHeader = ({showSearchHandler}) => {
+const MainHeader = ({ showSearchHandler }) => {
   const router = useRouter();
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.logo__div}>
         <Search className={styles.icon} onClick={showSearchHandler} />
         <Image
@@ -30,30 +30,45 @@ const MainHeader = ({showSearchHandler}) => {
           >
             <Link href={'/'}>Home</Link>
           </li>
+
           <li
             className={
-              (router.pathname === '/about' && styles.active__link) || ''
+              (router.pathname === '/all_books' && styles.active__link) || ''
             }
           >
-            <Link href={'/about'}>About</Link>
-          </li>
-          <li
-            className={
-              (router.pathname === '/about' && styles.active__link) || ''
-            }
-          >
-            <Link href={'/about'}>View Products</Link>
+            <Link href={'/all_books'}>All Books</Link>
           </li>
           <li
             className={
               (router.pathname === '/orders' && styles.active__link) || ''
             }
           >
-            <Link href={'/orders'}>View Orders</Link>
+            <Link href={'/orders'}>Fiction</Link>
+          </li>
+          <li
+            className={
+              (router.pathname === '/orders' && styles.active__link) || ''
+            }
+          >
+            <Link href={'/orders'}>Non-Fiction</Link>
+          </li>
+          <li
+            className={
+              (router.pathname === '/orders' && styles.active__link) || ''
+            }
+          >
+            <Link href={'/orders'}>Manga</Link>
+          </li>
+          <li
+            className={
+              (router.pathname === '/about' && styles.active__link) || ''
+            }
+          >
+            <Link href={'/about'}>About Us</Link>
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
 

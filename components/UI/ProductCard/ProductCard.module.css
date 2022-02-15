@@ -1,5 +1,5 @@
 .product__card {
-  max-width: 14rem;
+  width: 14rem;
   border-radius: var(--img-radius);
   box-shadow: 2px 2px 8px #eee7e7,-2px -2px 4px #eee7e7;
   margin: 0 1rem 0 0;
@@ -17,7 +17,7 @@
   margin-bottom: 0;
   padding-bottom: 0;
   height: 12rem;
- 
+ position: relative;
 }
 
 .product__image img {
@@ -51,4 +51,18 @@
   font-weight: 400;
   padding-bottom: 1rem;
   margin-bottom: 0;
+}
+
+.sold__out__indicator {
+  position: absolute;
+  bottom: 5%;
+  left: 1rem;
+  background-color: #DDA15E;
+  border-radius: 1rem;
+  width: 5rem;
+  height: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

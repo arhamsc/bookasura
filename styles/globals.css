@@ -1,6 +1,8 @@
 :root {
   --img-radius: .5rem;
   --linear-grad: linear-gradient(45deg, #cdf8ba, #e9f79a);
+  --dark-text: #413f3f;
+  --secondary-white: #f8f6ec;
 }
 html,
 body {

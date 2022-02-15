@@ -1,0 +1,21 @@
+.right__filter {
+  display: flex;
+  align-items: center;
+}
+
+.right__filter > div {
+  padding: 0 1rem 0 .1rem;
+}
+.right__filter select {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.right__filter select:focus {
+  outline: 1px solid var(--dark-text);
+  border-radius: .2rem;
+}

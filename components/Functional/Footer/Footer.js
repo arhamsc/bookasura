@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <section className={styles.footer}>
+    <footer className={styles.footer}>
       {/* Row 1 */}
       <div className={styles.footer__contents}>
         {/* Column 1 */}
@@ -57,7 +57,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };
 
