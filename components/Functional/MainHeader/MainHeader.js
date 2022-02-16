@@ -61,10 +61,10 @@ const MainHeader = ({ showSearchHandler }) => {
           </li>
           <li
             className={
-              (router.pathname === '/about' && styles.active__link) || ''
+              (router.pathname === '/about_us' && styles.active__link) || ''
             }
           >
-            <Link href={'/about'}>About Us</Link>
+            <Link href={'/about_us'}>About Us</Link>
           </li>
         </ul>
       </nav>

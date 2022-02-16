@@ -1,0 +1,30 @@
+.about__overview {
+  margin: 0 5rem;
+  text-align: center;
+}
+
+.about__us__heading p{
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.about__us__content {
+  padding-bottom: 2rem;
+  font-size: 1.1rem;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__us__content p {
+  width: 50%;
+}
+
+.tag__line {
+  font-style: italic;
+  font-weight: 600;
+}
