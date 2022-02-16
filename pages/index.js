@@ -1,21 +1,16 @@
 import Head from 'next/head';
-import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
 
 import styles from '../styles/Home.module.css';
 
-import Book from '../models/front_end/product';
 import { getRandom } from '../utils/random_array_ele';
+import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
 
 import Banner from '../components/Functional/Home/Banner/Banner';
 import ProductShowcase from '../components/Functional/Home/ProductShowcase/ProductShowcase';
 import Quote from '../components/Functional/Home/Quote/Quote';
 import CategoryNavigation from '../components/Functional/Home/CategoryNavigation/CategoryNavigation';
 
-import { fetchAllBooks } from '../context/actions/books_actions';
-import { requestUrl } from '../db/domain_url';
-
-export default function Home({popularBooks}) {
+export default function Home({ popularBooks }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,7 +20,7 @@ export default function Home({popularBooks}) {
       </Head>
       <main>
         <Banner />
-        <ProductShowcase popularBooks={popularBooks}/>
+        <ProductShowcase popularBooks={popularBooks} />
         <Quote />
         <CategoryNavigation />
       </main>
@@ -34,25 +29,14 @@ export default function Home({popularBooks}) {
 }
 
 export const getStaticProps = async () => {
-  const response = await axios.get(requestUrl('api/products'));
-  const books = response.data.map(
-    (book) =>
-      new Book(
-        book._id,
-        book.name,
-        book.price,
-        book.description,
-        book.category.name,
-        book.imageUrl,
-        book.inventory.quantity,
-      ).getBook(),
-  );
+  const {books} = await fetchAllBooks();
 
   const popularBooks = getRandom(books, 4);
 
   return {
     props: {
-      popularBooks
+      popularBooks,
+      books,
     },
     revalidate: 86400,
   };

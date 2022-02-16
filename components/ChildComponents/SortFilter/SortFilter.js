@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import styles from './SortFilter.module.css';
 
-const SortFilter = () => {
+const SortFilter = ({ sortOptionHandler }) => {
+  const selectRef = useRef();
+  const onSelectionChangeHandler = () => {
+    sortOptionHandler(selectRef.current.value);
+  }
   return (
     <div className={styles.right__filter}>
       <p>Sort:</p>
       <div>
-        <select name="sort" id="sort">
+        <select name="sort" id="sort" ref={selectRef} onChange={onSelectionChangeHandler}>
           <option value="default">Default</option>
           <option value="popular">Popular</option>
           <option value="ascending_alphabetically">Alphabetically(A-Z)</option>

@@ -1,13 +1,13 @@
+import React from 'react';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
+
+import MangaHeading from '../components/Functional/Manga/MangaHeader';
+import useSort from '../hooks/sort_hook';
+import useAvailability from '../hooks/availability_hook';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';
 
-import AllBooksHeading from '../components/Functional/AllBooks/AllBooksHeader';
-import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
-import useAvailability from '../hooks/availability_hook';
-import useSort from '../hooks/sort_hook';
-
-const AllBooks = ({ books, totalBooks }) => {
+const NonFictionBooks = ({ books, totalBooks }) => {
   const { sortBooks, sortedBooks } = useSort(books);
   const { filterBooks, books: updatedBooks } = useAvailability(sortedBooks);
 
@@ -20,13 +20,13 @@ const AllBooks = ({ books, totalBooks }) => {
   return (
     <main>
       <Head>
-        <title>All Books</title>
+        <title>Manga</title>
         <meta
           name="description"
-          content="View the full collection at bookasura"
+          content="View the manga collection at bookasura"
         />
       </Head>
-      <AllBooksHeading
+      <MangaHeading
         totalBooks={totalBooks}
         availableDropdownHandler={filterAvailableBooks}
         sortOptionHandler={sortBooksHandler}
@@ -35,15 +35,16 @@ const AllBooks = ({ books, totalBooks }) => {
     </main>
   );
 };
-
 export const getStaticProps = async () => {
-  const { books, totalBooks } = await fetchAllBooks();
+  const { books: allBooks } = await fetchAllBooks();
+  const onlyManga = allBooks.filter((book) => book.category === 'Manga');
+  const totalManga = onlyManga.length;
   return {
     props: {
-      books,
-      totalBooks,
+      books: onlyManga,
+      totalBooks: totalManga,
     },
   };
 };
 
-export default AllBooks;
+export default NonFictionBooks;

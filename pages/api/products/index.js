@@ -25,7 +25,8 @@ const handler = async (req, res) => {
         if (!products) {
           return errorHandler(res, 'No Products Found', 404);
         }
-        return res.json(products);
+        const totalQuantity = products.length;
+        return res.json({products,totalQuantity});
       } catch (error) {
         return errorHandler(res, error.message, 400);
       }

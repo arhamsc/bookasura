@@ -1,17 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import styles from './SubPageFilter.module.css';
 
 import AvailabilityDropdown from '../AvailabilityDropdown/AvailabilityDropdown';
 import SortFilter from '../SortFilter/SortFilter';
 
-const SubPageFilter = () => {
+const SubPageFilter = ({
+  totalBooks,
+  availableDropdownHandler,
+  sortOptionHandler,
+}) => {
   return (
     <div className={styles.filter__div}>
-      <AvailabilityDropdown />
+      <AvailabilityDropdown
+        availableDropdownHandler={availableDropdownHandler}
+      />
       <div className={styles.left__filter}>
-        <SortFilter />
-        <p>9 Books</p>
+        <SortFilter sortOptionHandler={sortOptionHandler} />
+        <p>{totalBooks.toString()} Books</p>
       </div>
     </div>
   );

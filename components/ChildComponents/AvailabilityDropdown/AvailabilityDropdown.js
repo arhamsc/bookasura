@@ -3,7 +3,7 @@ import { ArrowDropDown } from '@material-ui/icons';
 
 import styles from './AvailabilityDropdown.module.css';
 
-const AvailabilityDropdown = () => {
+const AvailabilityDropdown = ({ availableDropdownHandler }) => {
   const [selectedFilter, setSelectedFilter] = useState(0);
   const inStockRef = useRef();
   const outOfStockRef = useRef();
@@ -14,14 +14,18 @@ const AvailabilityDropdown = () => {
 
     if (!inStockChecked && !outOfStockedChecked) {
       setSelectedFilter(0);
+      availableDropdownHandler('default');
     }
 
     if (inStockChecked || outOfStockedChecked) {
       setSelectedFilter(1);
+      inStockChecked ? availableDropdownHandler('inStock') : null;
+      outOfStockedChecked ? availableDropdownHandler('outOfStock') : null;
     }
 
     if (inStockChecked && outOfStockedChecked) {
       setSelectedFilter(2);
+      availableDropdownHandler('default');
     }
   };
 
@@ -29,6 +33,7 @@ const AvailabilityDropdown = () => {
     inStockRef.current.checked = false;
     outOfStockRef.current.checked = false;
     setSelectedFilter(0);
+    availableDropdownHandler('default');
   };
 
   return (
@@ -52,7 +57,7 @@ const AvailabilityDropdown = () => {
                 type="checkbox"
                 name="in_stock"
                 id="in_stock"
-                onChange={checkHandler}
+                onClick={checkHandler}
                 ref={inStockRef}
               />
               <label htmlFor="in_stock">In Stock</label>

@@ -1,11 +1,9 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import { Provider } from 'react-redux';
-
 import '../styles/globals.css';
 
 import Layout from '../components/Functional/Layout/Layout';
 import Head from 'next/head';
-
+import { Provider } from 'react-redux';
 import store from '../context';
 
 function MyApp({ Component, pageProps }) {

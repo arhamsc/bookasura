@@ -19,11 +19,10 @@ export const fetchAllBooks = () => {
           book.inventory.quantity,
         ).getBook(),
       );
-          console.log(books)
+          console.log("This is action")
       const totalBooks = books.reduce(
         (acc, curr) => acc.inventory + curr.inventory,
       );
-      console.log(totalBooks);
       dispatch(
         booksActions.replaceBooks({
           books,

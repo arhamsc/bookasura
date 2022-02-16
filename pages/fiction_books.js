@@ -1,13 +1,13 @@
+import React from 'react';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
+
+import FictionHeading from '../components/Functional/FictionBooks/FictionBooksHeader';
+import useSort from '../hooks/sort_hook';
+import useAvailability from '../hooks/availability_hook';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';
 
-import AllBooksHeading from '../components/Functional/AllBooks/AllBooksHeader';
-import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
-import useAvailability from '../hooks/availability_hook';
-import useSort from '../hooks/sort_hook';
-
-const AllBooks = ({ books, totalBooks }) => {
+const FictionBooks = ({books, totalBooks}) => {
   const { sortBooks, sortedBooks } = useSort(books);
   const { filterBooks, books: updatedBooks } = useAvailability(sortedBooks);
 
@@ -20,13 +20,13 @@ const AllBooks = ({ books, totalBooks }) => {
   return (
     <main>
       <Head>
-        <title>All Books</title>
+        <title>Fiction Books</title>
         <meta
           name="description"
-          content="View the full collection at bookasura"
+          content="View the fictional books collection at bookasura"
         />
       </Head>
-      <AllBooksHeading
+      <FictionHeading
         totalBooks={totalBooks}
         availableDropdownHandler={filterAvailableBooks}
         sortOptionHandler={sortBooksHandler}
@@ -37,13 +37,15 @@ const AllBooks = ({ books, totalBooks }) => {
 };
 
 export const getStaticProps = async () => {
-  const { books, totalBooks } = await fetchAllBooks();
+  const { books: allBooks } = await fetchAllBooks();
+  const onlyFiction = allBooks.filter((book) => book.category === 'Fiction');
+  const totalFicBooks = onlyFiction.length;
   return {
     props: {
-      books,
-      totalBooks,
+      books: onlyFiction,
+      totalBooks: totalFicBooks,
     },
   };
 };
 
-export default AllBooks;
+export default FictionBooks;

@@ -11,21 +11,24 @@ const CategoryNavigation = () => {
         imageUrl={
           'https://i.ibb.co/xD99JyP/madalyn-cox-Vk-GGIZul-OE0-unsplash.jpg'
         }
+        navUrl="/fiction_books"
       />
       <NavigationCard
         categoryName={'Manga'}
         imageUrl={
           'https://upload.wikimedia.org/wikipedia/en/9/9a/Guilty_Crown_Blu-ray_Volume_1.jpg'
         }
+        navUrl="/manga"
       />
       <NavigationCard
         categoryName={'Non-Fiction'}
         imageUrl={
           'https://i.ibb.co/GsqXjY9/shiromani-kant-Hqbkgga0r-NQ-unsplash.jpg'
         }
+        navUrl="/non_fiction"
       />
     </section>
   );
-}
+};
 
-export default CategoryNavigation
+export default CategoryNavigation;

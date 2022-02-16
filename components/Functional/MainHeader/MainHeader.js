@@ -40,24 +40,24 @@ const MainHeader = ({ showSearchHandler }) => {
           </li>
           <li
             className={
-              (router.pathname === '/orders' && styles.active__link) || ''
+              (router.pathname === '/fiction_books' && styles.active__link) || ''
             }
           >
-            <Link href={'/orders'}>Fiction</Link>
+            <Link href={'/fiction_books'}>Fiction</Link>
           </li>
           <li
             className={
-              (router.pathname === '/orders' && styles.active__link) || ''
+              (router.pathname === '/non_fiction' && styles.active__link) || ''
             }
           >
-            <Link href={'/orders'}>Non-Fiction</Link>
+            <Link href={'/non_fiction'}>Non-Fiction</Link>
           </li>
           <li
             className={
-              (router.pathname === '/orders' && styles.active__link) || ''
+              (router.pathname === '/manga' && styles.active__link) || ''
             }
           >
-            <Link href={'/orders'}>Manga</Link>
+            <Link href={'/manga'}>Manga</Link>
           </li>
           <li
             className={

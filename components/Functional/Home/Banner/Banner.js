@@ -1,5 +1,6 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 import styles from './Banner.module.css';
 
@@ -10,14 +11,16 @@ function Banner() {
         <div>
           <h2>Are you a, Bookasura too?</h2>
           <p>Relish your mind with these books.</p>
-          <button>Lets Read</button>
+          <button>
+            <Link href={'/all_books'}>Lets Read</Link>
+          </button>
         </div>
       </div>
       <div className={styles.intro__image}>
         <Image
           src={'https://i.ibb.co/hBGy7H4/book-image.jpg'}
           alt={'book'}
-          layout={"fill"}
+          layout={'fill'}
           className={styles.image}
         />
       </div>
@@ -25,4 +28,4 @@ function Banner() {
   );
 }
 
-export default Banner
+export default Banner;
