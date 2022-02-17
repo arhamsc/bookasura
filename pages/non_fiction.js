@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
 
-import NonFictionHeading from '../components/Functional/NonFictionBooks/NonFictionBooksHeader';
+import NonFictionHeading from '../components/Functional/MainPages/NonFictionBooks/NonFictionBooksHeader';
 import useSort from '../hooks/sort_hook';
 import useAvailability from '../hooks/availability_hook';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';

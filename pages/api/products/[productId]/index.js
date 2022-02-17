@@ -1,17 +1,20 @@
-import dbConnect from '../../../db/dbConnect';
-import Product from '../../../models/api/product/product_model';
-import Category from '../../../models/api/product/category';
-import Inventory from '../../../models/api/product/inventory';
-
-import errorHandler from '../../../helpers/api/error_handler';
+import dbConnect from '../../../../db/dbConnect';
+import errorHandler from '../../../../helpers/api/error_handler';
+import Product from '../../../../models/api/product/product_model';
+import Category from '../../../../models/api/product/category';
+import Inventory from '../../../../models/api/product/inventory';
 
 const handler = async (req, res) => {
   const { method } = req;
+  const { productId } = req.query;
+  if (!productId) {
+    return errorHandler(res, 'Item Not Found', 404);
+  }
   await dbConnect();
   switch (method) {
     case 'GET': {
       try {
-        const products = await Product.find({})
+        const product = await Product.findById(productId)
           .populate({
             path: 'category',
             model: Category,
@@ -22,11 +25,10 @@ const handler = async (req, res) => {
             model: Inventory,
             select: { _id: 1, quantity: 1 },
           });
-        if (!products) {
-          return errorHandler(res, 'No Products Found', 404);
+        if (!product) {
+          return errorHandler(res, 'Product Not Found', 404);
         }
-        const totalQuantity = products.length;
-        return res.json({products,totalQuantity});
+        return res.json(product);
       } catch (error) {
         return errorHandler(res, error.message, 400);
       }

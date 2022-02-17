@@ -1,0 +1,90 @@
+.book__details__main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 5rem;
+}
+
+.image__div {
+  position: relative;
+  width: 90%;
+}
+
+.image {
+  border-radius: 1rem;
+}
+
+.name__price > p{
+  font-size: 2rem;
+  color: var(--dark-text);
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.name__price > div {
+  display: flex;
+  align-items: center;
+}
+
+.name__price > div p {
+  padding-right: 2rem;
+}
+
+.name__price > div p:first-child {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.name__price > div p:last-child {
+  font-weight: 300;
+}
+
+.add__to__cart__button button {
+  width: 100%;
+  background: var(--linear-grad);
+  border: 1px solid #283618;
+  padding: 1rem 0;
+  border-radius: .5rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  color: var(--dark-text);
+  cursor: pointer;
+}
+
+.add__to__cart__button button:disabled {
+  background: var(--disabled-grad);
+  color: black;
+}
+
+.description {
+  line-height: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modal {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--linear-grad);
+  border-radius: .5rem;
+  width: 80%;
+  text-align: center;
+}
+
+.modal > button {
+  position: absolute;
+  right: 1rem;
+  top: .5rem;
+  background: none;
+  border: none;
+}
+
+.modal > button:hover {
+  cursor: pointer;
+}

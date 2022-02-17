@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';
 
-import AllBooksHeading from '../components/Functional/AllBooks/AllBooksHeader';
+import AllBooksHeading from '../components/Functional/MainPages/AllBooks/AllBooksHeader';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
 import useAvailability from '../hooks/availability_hook';
 import useSort from '../hooks/sort_hook';

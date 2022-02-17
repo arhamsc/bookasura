@@ -1,0 +1,13 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   border-bottom: 1px solid grey;
+}
+
+.heading p {
+  font-size: 2rem;
+  color: var(--dark-text);
+  font-weight: 700;
+  font-style: italic;
+}

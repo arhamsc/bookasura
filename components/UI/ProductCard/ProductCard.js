@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import React from 'react';
 
 import styles from './ProductCard.module.css';
 
-const ProductCard = ({ itemName, imageUrl, price, soldOut }) => {
+const ProductCard = ({ itemName, imageUrl, price, soldOut, navUrl }) => {
   return (
     <section className={styles.product__card}>
       <div className={styles.product__image}>
@@ -15,7 +16,9 @@ const ProductCard = ({ itemName, imageUrl, price, soldOut }) => {
         )}
       </div>
       <div className={styles.product__details}>
-        <p>{itemName}</p>
+        <p>
+          <Link href={navUrl ?? ''}>{itemName}</Link>
+        </p>
         <p> &#x20B9;{price} INR</p>
       </div>
     </section>

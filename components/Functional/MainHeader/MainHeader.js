@@ -21,7 +21,9 @@ const MainHeader = ({ showSearchHandler }) => {
           width={'100rem'}
           height={'60rem'}
         />
-        <ShoppingCartOutlined className={styles.icon} />
+        <Link href={'/cart'} passHref={true}>
+          <ShoppingCartOutlined className={styles.icon} />
+        </Link>
       </div>
       <nav className={styles.navbar}>
         <ul>
@@ -40,7 +42,8 @@ const MainHeader = ({ showSearchHandler }) => {
           </li>
           <li
             className={
-              (router.pathname === '/fiction_books' && styles.active__link) || ''
+              (router.pathname === '/fiction_books' && styles.active__link) ||
+              ''
             }
           >
             <Link href={'/fiction_books'}>Fiction</Link>

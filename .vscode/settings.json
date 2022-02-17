@@ -5,5 +5,8 @@
     "instock",
     "outofstock",
     "soldout"
+  ],
+  "eslint.workingDirectories": [
+    "."
   ]
 }

@@ -1,0 +1,38 @@
+.sub__total__div {
+  text-align: right;
+  border-top: 1px solid grey;
+  padding-bottom: 2rem;
+}
+
+.sub__total__div > p:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.sub__total__div > p > span {
+  font-weight: 300;
+  padding-left: 1rem;
+}
+
+.sub__total__div > p:nth-child(2) {
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+
+.sub__total__div > button {
+  background: #f27f34;
+  color: var(--secondary-white);
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.5rem 5rem;
+  border-radius: 0.5rem;
+}
+
+.sub__total__div > button:disabled {
+  background: var(--disabled-grad);
+}
+
+.sub__total__div > button:hover {
+  cursor: pointer;
+}

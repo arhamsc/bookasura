@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCard from '../../../UI/ProductCard/ProductCard';
-import { useSelector } from 'react-redux';
-import { getRandom } from '../../../../utils/random_array_ele';
+
 import styles from './ProductShowcase.module.css';
 
 const ProductShowcase = ({popularBooks}) => {
@@ -17,6 +16,7 @@ const ProductShowcase = ({popularBooks}) => {
             imageUrl={book.imageUrl}
             price={book.price}
             soldOut={book.inventory === 0}
+            navUrl={`/books/${book._id}`}
           />
         ))}
       </section>

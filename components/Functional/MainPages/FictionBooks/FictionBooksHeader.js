@@ -1,17 +1,18 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 
-import Heading from '../../ChildComponents/Header/Heading';
+import Heading from '../../../ChildComponents/Header/Heading';
 
-const NonFictionHeading = ({
+const FictionHeading = ({
   totalBooks,
   availableDropdownHandler,
   sortOptionHandler,
 }) => {
   return (
     <Heading
-      title={'Non-Fiction'}
+      title={'Fiction'}
       subtitle={
-        'Love to take a realistic look on the world? Don\'t worry, we have you covered. '
+        'Take a look at our fictional collection to soothe the wandering soul. '
       }
       availableDropdownHandler={availableDropdownHandler}
       totalBooks={totalBooks}
@@ -20,4 +21,4 @@ const NonFictionHeading = ({
   );
 };
 
-export default NonFictionHeading;
+export default FictionHeading;

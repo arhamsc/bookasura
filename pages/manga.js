@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
 
-import MangaHeading from '../components/Functional/Manga/MangaHeader';
+import MangaHeading from '../components/Functional/MainPages/Manga/MangaHeader';
 import useSort from '../hooks/sort_hook';
 import useAvailability from '../hooks/availability_hook';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';

@@ -1,6 +1,6 @@
-import axios from "axios";
-import Book from "../../models/front_end/product";
-import { requestUrl } from "../../db/domain_url";
+import axios from 'axios';
+import Book from '../../models/front_end/product';
+import { requestUrl } from '../../db/domain_url';
 
 export const fetchAllBooks = async () => {
   const response = await axios.get(requestUrl('api/products'));
@@ -16,5 +16,19 @@ export const fetchAllBooks = async () => {
     ).getBook(),
   );
   const totalBooks = response.data.totalQuantity;
-  return {books, totalBooks};
-}
+  return { books, totalBooks };
+};
+
+export const fetchOneBook = async (bookId) => {
+  const { data } = await axios.get(requestUrl(`api/products/${bookId}`));
+  const book = new Book(
+    data._id,
+    data.name,
+    data.price,
+    data.description,
+    data.category.name,
+    data.imageUrl,
+    data.inventory.quantity,
+  ).getBook();
+  return book;
+};

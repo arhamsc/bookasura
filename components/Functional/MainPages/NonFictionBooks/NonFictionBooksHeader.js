@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Heading from '../../ChildComponents/Header/Heading';
+import Heading from '../../../ChildComponents/Header/Heading';
 
-const MangaHeading = ({
+const NonFictionHeading = ({
   totalBooks,
   availableDropdownHandler,
   sortOptionHandler,
 }) => {
   return (
     <Heading
-      title={'Manga'}
+      title={'Non-Fiction'}
       subtitle={
-        'You are a Cultural Fanatic? Let\'s take a look at our awesome top rated manga collection. '
+        'Love to take a realistic look on the world? Don\'t worry, we have you covered. '
       }
       availableDropdownHandler={availableDropdownHandler}
       totalBooks={totalBooks}
@@ -20,4 +20,4 @@ const MangaHeading = ({
   );
 };
 
-export default MangaHeading;
+export default NonFictionHeading;

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
 
-import FictionHeading from '../components/Functional/FictionBooks/FictionBooksHeader';
+import FictionHeading from '../components/Functional//MainPages/FictionBooks/FictionBooksHeader';
 import useSort from '../hooks/sort_hook';
 import useAvailability from '../hooks/availability_hook';
 import AllBooksCards from '../components/ChildComponents/AllBooksCards/AllBooksCards';

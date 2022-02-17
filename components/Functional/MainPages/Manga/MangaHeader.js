@@ -1,18 +1,17 @@
-/* eslint-disable react/jsx-key */
 import React from 'react';
 
-import Heading from '../../ChildComponents/Header/Heading';
+import Heading from '../../../ChildComponents/Header/Heading';
 
-const FictionHeading = ({
+const MangaHeading = ({
   totalBooks,
   availableDropdownHandler,
   sortOptionHandler,
 }) => {
   return (
     <Heading
-      title={'Fiction'}
+      title={'Manga'}
       subtitle={
-        'Take a look at our fictional collection to soothe the wandering soul. '
+        'You are a Cultural Fanatic? Let\'s take a look at our awesome top rated manga collection. '
       }
       availableDropdownHandler={availableDropdownHandler}
       totalBooks={totalBooks}
@@ -21,4 +20,4 @@ const FictionHeading = ({
   );
 };
 
-export default FictionHeading;
+export default MangaHeading;

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 
-import Heading from '../../ChildComponents/Header/Heading';
+import Heading from '../../../ChildComponents/Header/Heading';
 
 const AllBooksHeading = ({
   totalBooks,

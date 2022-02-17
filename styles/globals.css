@@ -1,6 +1,7 @@
 :root {
   --img-radius: .5rem;
   --linear-grad: linear-gradient(45deg, #cdf8ba, #e9f79a);
+  --disabled-grad: linear-gradient(45deg, grey, rgb(83, 82, 82, .5));
   --dark-text: #413f3f;
   --secondary-white: #f8f6ec;
 }
