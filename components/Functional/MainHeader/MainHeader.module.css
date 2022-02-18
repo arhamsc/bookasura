@@ -1,6 +1,6 @@
 .header {
   padding-top: 1rem;
-  background-color: #FEFAE0;
+  background-color: #fefae0;
   position: relative;
   top: 0;
   left: 0;
@@ -11,9 +11,9 @@
 .logo__div {
   display: flex;
   justify-content: space-evenly;
+  margin: 0 auto;
   align-items: center;
   width: 100%;
-  margin-bottom: 0;
 }
 
 .icon:hover {
@@ -37,16 +37,35 @@
   list-style: none;
   padding: 0;
   justify-content: center;
-   z-index: 10;
+  z-index: 10;
 }
 
 .navbar ul li {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  padding: 0 1rem .3rem 1rem;
+  padding: 0 1rem 0.3rem 1rem;
 }
 
 .navbar li:hover {
-  transition: border-bottom 450ms ease-out ;
+  transition: border-bottom 450ms ease-out;
   border-bottom: 1px solid #283618;
+}
+
+.login__button {
+  background: #dda15e;
+  color: var(--secondary-white);
+  border: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 0.5rem 2rem;
+}
+
+.logged__in__icons {
+  display: flex;
+  align-items: center;
+  margin-right: -6rem;
+}
+
+.logged__in__icons > button {
+  margin-left: 1rem;
 }

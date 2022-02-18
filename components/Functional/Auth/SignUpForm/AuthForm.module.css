@@ -1,0 +1,72 @@
+.form {
+  background-color: #606C38;
+  width: 50%;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: .5rem;
+  color: #FEFAE0;
+}
+
+.form h1 {
+  font-size: 2rem;
+  border-bottom: 1px solid #FEFAE0;
+  padding-bottom: .5rem;
+}
+
+.form label{
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: .5rem;
+}
+
+.form input {
+  background: none;
+  border: 1px solid #FEFAE0;
+  outline: none;
+  border-radius: .2rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  color: #FEFAE0;
+}
+
+.form input::placeholder {
+  color: #FEFAE0;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.form div {
+  padding: .5rem
+}
+
+.form > form > div > button {
+  background: #DDA15E;
+  color: inherit;
+  font-style:  inherit;
+  font-size: 1.5rem;
+  border: none;
+  padding: .5rem 1rem;
+  margin-top: 1rem;
+  border-radius: .2rem;
+}
+
+.form button:hover {
+  cursor: pointer;
+}
+
+.error {
+  color: rgb(253, 136, 136);
+}
+
+.message > button {
+  background: #DDA15E;
+  color: inherit;
+  font-style:  inherit;
+  font-size: inherit;
+  border: none;
+  padding: .3rem 1rem;
+  margin-left: 1rem;
+  border-radius: .2rem;
+}

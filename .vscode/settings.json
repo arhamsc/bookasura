@@ -2,11 +2,10 @@
   "cSpell.words": [
     "bookasura",
     "Booksasura",
+    "cpassword",
     "instock",
     "outofstock",
     "soldout"
   ],
-  "eslint.workingDirectories": [
-    "."
-  ]
+  "eslint.workingDirectories": ["."]
 }

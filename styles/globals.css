@@ -1,20 +1,19 @@
 :root {
-  --img-radius: .5rem;
+  --img-radius: 0.5rem;
   --linear-grad: linear-gradient(45deg, #cdf8ba, #e9f79a);
-  --disabled-grad: linear-gradient(45deg, grey, rgb(83, 82, 82, .5));
+  --disabled-grad: linear-gradient(45deg, grey, rgb(83, 82, 82, 0.5));
   --dark-text: #413f3f;
   --secondary-white: #f8f6ec;
 }
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'Nunito';
   color: #5a5959;
-  background-color: #FEFAE0;
+  background-color: #fefae0;
 }
-
-
 
 main {
   margin: 0 5rem;
@@ -27,6 +26,10 @@ a {
 
 ul {
   list-style: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 

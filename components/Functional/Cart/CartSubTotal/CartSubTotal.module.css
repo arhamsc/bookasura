@@ -19,7 +19,7 @@
   padding-bottom: 0.5rem;
 }
 
-.sub__total__div > button {
+.sub__total__div  button {
   background: #f27f34;
   color: var(--secondary-white);
   border: none;
@@ -29,7 +29,7 @@
   border-radius: 0.5rem;
 }
 
-.sub__total__div > button:disabled {
+.sub__total__div  button:disabled {
   background: var(--disabled-grad);
 }
 

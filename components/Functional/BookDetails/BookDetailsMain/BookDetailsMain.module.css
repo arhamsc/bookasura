@@ -1,12 +1,15 @@
 .book__details__main {
   display: grid;
   grid-template-columns: 50% 50%;
+  padding-top: 2rem;
   margin-bottom: 5rem;
+  height: 30rem;
 }
 
 .image__div {
   position: relative;
   width: 90%;
+  
 }
 
 .image {

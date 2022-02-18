@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import BookDetailsMain from '../../../components/Functional/BookDetails/BookDetailsMain/BookDetailsMain';
 import InterestedBooks from '../../../components/Functional/BookDetails/InterestedBooks/InterestedBooks';
 import { cartActions } from '../../../context/context-slices/cart-slice';
+import { isAuth } from '../../../helpers/from-end/is_auth';
 import {
   fetchAllBooks,
   fetchOneBook,
@@ -11,12 +12,21 @@ import {
 const BookDetails = ({ book, books }) => {
   const dispatch = useDispatch();
 
+  const isAuthenticated = isAuth();
+
   const onAddToCartHandler = (cartItem) => {
+    if (!isAuthenticated) {
+      return;
+    }
     dispatch(cartActions.addItemToCart(cartItem));
   };
   return (
     <main>
-      <BookDetailsMain book={book} onAddToCartHandler={onAddToCartHandler}/>
+      <BookDetailsMain
+        book={book}
+        onAddToCartHandler={onAddToCartHandler}
+        canAddToCart={isAuthenticated}
+      />
       <InterestedBooks books={books} />
       <div
         style={{

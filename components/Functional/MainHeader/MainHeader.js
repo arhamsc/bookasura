@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -8,22 +8,66 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import Image from 'next/image';
 import Logo from '../../../public/bookasura_logo.png';
 
+import { isAuth, logout } from '../../../helpers/from-end/is_auth';
+
 const MainHeader = ({ showSearchHandler }) => {
   const router = useRouter();
+  let isAuthenticated = isAuth();
+
+  const authPage = router.pathname.includes('auth');
+
+  const authButtonHandler = (authType) => {
+    if (authType === 'login') {
+      router.push('/auth');
+    }
+
+    if (authType === 'logout') {
+      logout();
+      router.replace('/');
+    }
+    return;
+  };
+
+  const loggedInIcons = (
+    <div className={styles.logged__in__icons}>
+      <Link href={'/cart'} passHref={true}>
+        <ShoppingCartOutlined className={styles.icon} />
+      </Link>
+      <button
+        className={styles.login__button}
+        onClick={() => authButtonHandler('logout')}
+      >
+        Logout
+      </button>
+    </div>
+  );
 
   return (
     <header className={styles.header}>
       <div className={styles.logo__div}>
-        <Search className={styles.icon} onClick={showSearchHandler} />
+        {!authPage ? (
+          <Search className={styles.icon} onClick={showSearchHandler} />
+        ) : (
+          <div></div>
+        )}
         <Image
           src={Logo}
           alt="Booksasura_Logo"
           width={'100rem'}
           height={'60rem'}
         />
-        <Link href={'/cart'} passHref={true}>
-          <ShoppingCartOutlined className={styles.icon} />
-        </Link>
+        {!authPage && isAuthenticated ? (
+          loggedInIcons
+        ) : !authPage ? (
+          <button
+            onClick={() => authButtonHandler('login')}
+            className={styles.login__button}
+          >
+            Login
+          </button>
+        ) : (
+          <div></div>
+        )}
       </div>
       <nav className={styles.navbar}>
         <ul>

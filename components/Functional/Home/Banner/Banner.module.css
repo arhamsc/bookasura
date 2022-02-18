@@ -7,8 +7,8 @@
 }
 
 .intro__card {
-
-  height: 20rem;
+  height: 30rem;
+  width: 30rem;
   background-image: var(--linear-grad);
   display: flex;
   justify-content: center;
@@ -23,21 +23,22 @@
 }
 
 .intro__card h2 {
-  line-height: 2.5rem;
+  line-height: 4rem;
+  font-size: 2.5rem;
 }
 
 .intro__card p {
   color: #5a5959;
   line-height: 1.5rem;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
 }
 
 .intro__card button {
   border: none;
   outline: none;
-  font-size: 0.7rem;
+  font-size: 1rem;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   color: #cdf8ba;

@@ -2,18 +2,23 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 import styles from './BookDetailsMain.module.css';
-const BookDetailsMain = ({ book, onAddToCartHandler }) => {
+const BookDetailsMain = ({ book, onAddToCartHandler, canAddToCart }) => {
   const soldOut = book.inventory <= 0;
   const [showModal, setShowModal] = useState(false);
-
+  const [modalText, setModalText] = useState('');
   const buttonClickHandler = () => {
     setShowModal(true);
-    onAddToCartHandler({
-      _id: book._id,
-      name: book.name,
-      price: book.price,
-      imageUrl: book.imageUrl,
-    });
+    if (!canAddToCart) {
+      setModalText('You Have to Login!!!!');
+    } else {
+      setModalText('Added to Cart');
+      onAddToCartHandler({
+        _id: book._id,
+        name: book.name,
+        price: book.price,
+        imageUrl: book.imageUrl,
+      });
+    }
   };
 
   const closeModalHandler = () => {
@@ -52,12 +57,12 @@ const BookDetailsMain = ({ book, onAddToCartHandler }) => {
         </div>
       </div>
       {/* Added to cart confirmation model */}
-      { showModal && 
+      {showModal && (
         <div className={styles.modal}>
           <button onClick={closeModalHandler}>X</button>
-          <p>Added to Cart</p>
+          <p>{modalText}</p>
         </div>
-      }
+      )}
     </section>
   );
 };

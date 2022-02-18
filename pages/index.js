@@ -9,8 +9,23 @@ import Banner from '../components/Functional/Home/Banner/Banner';
 import ProductShowcase from '../components/Functional/Home/ProductShowcase/ProductShowcase';
 import Quote from '../components/Functional/Home/Quote/Quote';
 import CategoryNavigation from '../components/Functional/Home/CategoryNavigation/CategoryNavigation';
+import { useEffect } from 'react';
 
 export default function Home({ popularBooks }) {
+  useEffect(() => {
+    const checkTimer = async () => {
+      const timer = localStorage.getItem('timerId');
+      const expiryDate = localStorage.getItem('expiryDate');
+      if (Date.now() > expiryDate) {
+        clearTimeout(timer);
+        localStorage.removeItem('timerId');
+        localStorage.removeItem('expiryTime');
+        localStorage.removeItem('expiryDate');
+        localStorage.removeItem('token');
+      }
+    };
+    checkTimer();
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -29,7 +44,7 @@ export default function Home({ popularBooks }) {
 }
 
 export const getStaticProps = async () => {
-  const {books} = await fetchAllBooks();
+  const { books } = await fetchAllBooks();
 
   const popularBooks = getRandom(books, 4);
 
