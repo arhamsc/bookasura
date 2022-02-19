@@ -71,6 +71,5 @@ export const getServerSideProps = async () => {
       popularBooks,
       books,
     },
-    revalidate: 86400,
   };
 };
