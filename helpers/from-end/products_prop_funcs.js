@@ -2,6 +2,11 @@ import axios from 'axios';
 import Book from '../../models/front_end/product';
 import { requestUrl } from '../../db/domain_url';
 
+import dbConnect from '../../db/dbConnect';
+import Category from '../../models/api/product/category';
+import Inventory from '../../models/api/product/inventory';
+import Product from '../../models/api/product/product_model';
+
 export const fetchAllBooks = async () => {
   const response = await axios.get(requestUrl('api/products'));
   const books = response.data.products.map((book) =>
@@ -15,7 +20,22 @@ export const fetchAllBooks = async () => {
       book.inventory.quantity,
     ).getBook(),
   );
-  const totalBooks = response.data.totalQuantity;
+  // await dbConnect();
+
+  // const products = await Product.find({})
+  //   .populate({
+  //     path: 'category',
+  //     model: Category,
+  //     select: { _id: 1, name: 1 },
+  //   })
+  //   .populate({
+  //     path: 'inventory',
+  //     model: Inventory,
+  //     select: { _id: 1, quantity: 1 },
+  //   });
+
+  // const books = JSON.parse(JSON.stringify(products));
+  const totalBooks = books.totalQuantity;
   return { books, totalBooks };
 };
 

@@ -2,8 +2,11 @@ import Head from 'next/head';
 
 import styles from '../styles/Home.module.css';
 
+
+
 import { getRandom } from '../utils/random_array_ele';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
+
 
 import Banner from '../components/Functional/Home/Banner/Banner';
 import ProductShowcase from '../components/Functional/Home/ProductShowcase/ProductShowcase';
@@ -44,8 +47,23 @@ export default function Home({ popularBooks }) {
 }
 
 export const getStaticProps = async () => {
-  const { books } = await fetchAllBooks();
+  // await dbConnect();
 
+  // const products = await Product.find({})
+  //   .populate({
+  //     path: 'category',
+  //     model: Category,
+  //     select: { _id: 1, name: 1 },
+  //   })
+  //   .populate({
+  //     path: 'inventory',
+  //     model: Inventory,
+  //     select: { _id: 1, quantity: 1 },
+  //   });
+
+  //   const books = JSON.parse(JSON.stringify(products))
+
+  const { books } = await fetchAllBooks();
   const popularBooks = getRandom(books, 4);
 
   return {
