@@ -73,7 +73,6 @@ export const getServerSideProps = async (context) => {
       book,
       books,
     },
-    revalidate: 43200,
   };
 };
 

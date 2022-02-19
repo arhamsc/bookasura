@@ -35,35 +35,6 @@ const EditBook = ({ book }) => {
   );
 };
 
-// export const getPaths = async () => {
-//   const paths = [
-//     {
-//       params: {
-//         bookId: '620b6c0f011912456d453290',
-//       },
-//     },
-//     {
-//       params: {
-//         bookId: '620b6c0f011912456d45328c',
-//       },
-//     },
-//     {
-//       params: {
-//         bookId: '620b6c0f011912456d45329c',
-//       },
-//     },
-//     {
-//       params: {
-//         bookId: '620b6c0f011912456d453288',
-//       },
-//     },
-//   ];
-//   return {
-//     fallback: 'blocking',
-//     paths: paths,
-//   };
-// };
-
 export const getServerSideProps = async (context) => {
   const { bookId } = context.params;
   const book = await fetchOneBook(bookId);
