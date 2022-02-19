@@ -2,11 +2,12 @@ import Head from 'next/head';
 
 import styles from '../styles/Home.module.css';
 
-
-
+import Product from '../models/api/product/product_model';
+import Inventory from '../models/api/product/inventory';
+import Category from '../models/api/product/category';
+import dbConnect from '../db/dbConnect';
 import { getRandom } from '../utils/random_array_ele';
 import { fetchAllBooks } from '../helpers/from-end/products_prop_funcs';
-
 
 import Banner from '../components/Functional/Home/Banner/Banner';
 import ProductShowcase from '../components/Functional/Home/ProductShowcase/ProductShowcase';
@@ -47,23 +48,23 @@ export default function Home({ popularBooks }) {
 }
 
 export const getServerSideProps = async () => {
-  // await dbConnect();
+  await dbConnect();
 
-  // const products = await Product.find({})
-  //   .populate({
-  //     path: 'category',
-  //     model: Category,
-  //     select: { _id: 1, name: 1 },
-  //   })
-  //   .populate({
-  //     path: 'inventory',
-  //     model: Inventory,
-  //     select: { _id: 1, quantity: 1 },
-  //   });
+  const products = await Product.find({})
+    .populate({
+      path: 'category',
+      model: Category,
+      select: { _id: 1, name: 1 },
+    })
+    .populate({
+      path: 'inventory',
+      model: Inventory,
+      select: { _id: 1, quantity: 1 },
+    });
 
-  //   const books = JSON.parse(JSON.stringify(products))
+  const books = JSON.parse(JSON.stringify(products));
 
-  const { books } = await fetchAllBooks();
+  // const { books } = await fetchAllBooks();
   const popularBooks = getRandom(books, 4);
 
   return {

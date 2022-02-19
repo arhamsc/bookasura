@@ -16,10 +16,6 @@ const AboutUS = () => {
       <About />
       <section
       className={homeStyles.about__us__padding}
-        
-        
-      
-      
       >
         <Quote />
       </section>
