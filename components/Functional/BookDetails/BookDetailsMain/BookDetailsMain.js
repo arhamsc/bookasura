@@ -1,4 +1,4 @@
-import { DeleteOutline, Router } from '@material-ui/icons';
+import { DeleteOutline } from '@material-ui/icons';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';

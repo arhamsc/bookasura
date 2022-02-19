@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styles from './AllBooksCards.module.css';
 
 import ProductCard from '../../UI/ProductCard/ProductCard';
