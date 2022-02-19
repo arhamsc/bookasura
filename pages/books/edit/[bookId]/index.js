@@ -8,6 +8,7 @@ import {
   fetchAllBooks,
 } from '../../../../helpers/from-end/products_prop_funcs';
 import { isAuth } from '../../../../helpers/from-end/is_auth';
+import Head from 'next/head';
 
 const EditBook = ({ book }) => {
   const user = useSelector((state) => state.user);
@@ -21,6 +22,9 @@ const EditBook = ({ book }) => {
   }, [user, router, isAuthenticated]);
   return (
     <main>
+      <Head>
+        <title>Editing a Book</title>
+      </Head>
       <AddEditBook book={book} />
     </main>
   );

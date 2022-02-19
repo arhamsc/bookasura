@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
       <PersistGate loading={null} persistor={persistor}></PersistGate>
       <Layout>
         <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

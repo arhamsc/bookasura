@@ -4,18 +4,23 @@ import { useRouter } from 'next/router';
 
 import styles from './MainHeader.module.css';
 
-import { ShoppingCartOutlined } from '@material-ui/icons';
+import { Add, ShoppingCartOutlined } from '@material-ui/icons';
 import Image from 'next/image';
 import Logo from '../../../public/bookasura_logo.png';
 
 import { isAuth, logout } from '../../../helpers/from-end/is_auth';
 import { useDispatch } from 'react-redux';
 import { userAction } from '../../../context/context-slices/user-slice';
+import PCNavBar from '../../ChildComponents/PCNavBar/PCNavBar';
+import MobileNavBar from '../../ChildComponents/MobileNavBar/MobileNavBar';
+import { useSelector } from 'react-redux';
 
 const MainHeader = () => {
   const router = useRouter();
   let isAuthenticated = isAuth();
   const dispatch = useDispatch();
+
+  const role = useSelector((state) => state.user.role);
 
   const authPage = router.pathname.includes('auth');
 
@@ -49,7 +54,13 @@ const MainHeader = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo__div}>
-        <div></div>
+        {role === 'admin' ? (
+          <Link href={'/books/edit/add_book'} passHref={true}>
+            <Add />
+          </Link>
+        ) : (
+          <div></div>
+        )}
         <Image
           src={Logo}
           alt="Booksasura_Logo"
@@ -69,52 +80,8 @@ const MainHeader = () => {
           <div></div>
         )}
       </div>
-      <nav className={styles.navbar}>
-        <ul>
-          <li
-            className={(router.pathname === '/' && styles.active__link) || ''}
-          >
-            <Link href={'/'}>Home</Link>
-          </li>
-
-          <li
-            className={
-              (router.pathname === '/all_books' && styles.active__link) || ''
-            }
-          >
-            <Link href={'/all_books'}>All Books</Link>
-          </li>
-          <li
-            className={
-              (router.pathname === '/fiction_books' && styles.active__link) ||
-              ''
-            }
-          >
-            <Link href={'/fiction_books'}>Fiction</Link>
-          </li>
-          <li
-            className={
-              (router.pathname === '/non_fiction' && styles.active__link) || ''
-            }
-          >
-            <Link href={'/non_fiction'}>Non-Fiction</Link>
-          </li>
-          <li
-            className={
-              (router.pathname === '/manga' && styles.active__link) || ''
-            }
-          >
-            <Link href={'/manga'}>Manga</Link>
-          </li>
-          <li
-            className={
-              (router.pathname === '/about_us' && styles.active__link) || ''
-            }
-          >
-            <Link href={'/about_us'}>About Us</Link>
-          </li>
-        </ul>
-      </nav>
+      <PCNavBar />
+      <MobileNavBar />
     </header>
   );
 };

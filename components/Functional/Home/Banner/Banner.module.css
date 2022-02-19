@@ -57,3 +57,24 @@
   border-radius: 5%;
   opacity: 0.8;
 }
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .intro__card {
+    width: 20rem;
+    margin: 2rem 0;
+  }
+
+  .intro__card button {
+    margin-bottom: 1rem;
+  }
+
+  .intro__image {
+    width: 70%;
+  }
+}

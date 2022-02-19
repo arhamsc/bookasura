@@ -1,0 +1,51 @@
+.menu__icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.navbar {
+  display: none;
+  position: absolute;
+  width: 100%;
+  
+  background-color: #001d3dd0;
+  color: var(--secondary-white);
+  margin-top: 2rem;
+  margin-bottom: 0;
+  z-index: 4;
+}
+
+.navbar li {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.navbar li:hover {
+  text-decoration: underline;
+}
+
+.activeNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0);
+  height: 50vh;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.navbar button {
+  background: #ee964b;
+  color: var(--secondary-white);
+  border: none;
+  font-style: inherit;
+  padding: .5rem 2rem;
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 854px) {
+  .navbar__section {
+    display: none;
+  }
+}

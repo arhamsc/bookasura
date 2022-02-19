@@ -113,3 +113,14 @@
   font-style: inherit;
   color: var(--secondary-white);
 }
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1024px) {
+  .book__details__main {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 100%;
+    justify-items: center;
+    margin-bottom: 20rem;
+  }
+
+}

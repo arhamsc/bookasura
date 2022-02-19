@@ -1,0 +1,35 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.active__link {
+  border-bottom: 1px solid #283618;
+}
+
+.navbar ul {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  z-index: 10;
+}
+
+.navbar ul li {
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0 1rem 0.3rem 1rem;
+}
+
+.navbar li:hover {
+  transition: border-bottom 450ms ease-out;
+  border-bottom: 1px solid #283618;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .navbar {
+    display: none;
+  }
+}
