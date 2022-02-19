@@ -31,14 +31,31 @@ const EditBook = ({ book }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { books } = await fetchAllBooks();
+  const paths = [
+    {
+      params: {
+        bookId: '620b6c0f011912456d453290',
+      },
+    },
+    {
+      params: {
+        bookId: '620b6c0f011912456d45328c',
+      },
+    },
+    {
+      params: {
+        bookId: '620b6c0f011912456d45329c',
+      },
+    },
+    {
+      params: {
+        bookId: '620b6c0f011912456d453288',
+      },
+    },
+  ];
   return {
     fallback: 'blocking',
-    paths: books.map((book) => ({
-      params: {
-        bookId: book._id.toString(),
-      },
-    })),
+    paths: paths,
   };
 };
 
