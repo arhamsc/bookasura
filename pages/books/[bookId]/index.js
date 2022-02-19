@@ -60,6 +60,7 @@ const BookDetails = ({ book, books }) => {
 
 export const getStaticPaths = async () => {
   const { books } = await fetchAllBooks();
+  console.log(books)
   return {
     fallback: 'blocking',
     paths: books.slice(0,8).map((book) => ({
