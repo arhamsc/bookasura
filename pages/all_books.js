@@ -36,7 +36,7 @@ const AllBooks = ({ books, totalBooks }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { books, totalBooks } = await fetchAllBooks();
   return {
     props: {

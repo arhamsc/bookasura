@@ -36,7 +36,7 @@ const FictionBooks = ({books, totalBooks}) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { books: allBooks } = await fetchAllBooks();
   const onlyFiction = allBooks.filter((book) => book.category === 'Fiction');
   const totalFicBooks = onlyFiction.length;

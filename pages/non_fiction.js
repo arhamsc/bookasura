@@ -35,7 +35,7 @@ const NonFictionBooks = ({ books, totalBooks }) => {
     </main>
   );
 };
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { books: allBooks } = await fetchAllBooks();
   const onlyNonFiction = allBooks.filter(
     (book) => book.category === 'Non-Fiction',

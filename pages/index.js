@@ -46,7 +46,7 @@ export default function Home({ popularBooks }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   // await dbConnect();
 
   // const products = await Product.find({})
