@@ -15,7 +15,7 @@ export const fetchAllBooks = async () => {
       book.inventory.quantity,
     ).getBook(),
   );
-  const totalBooks = books.totalQuantity;
+  const totalBooks = response.data.totalQuantity;
   return { books, totalBooks };
 };
 

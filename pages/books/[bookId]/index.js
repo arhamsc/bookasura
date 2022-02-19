@@ -26,12 +26,9 @@ const BookDetails = ({ book, books }) => {
 
   const deleteBookHandler = async (bookId) => {
     try {
-      await axios.delete(
-        requestUrl(`api/products/${bookId}`),
-        {
-          'Content-Type': 'application/json',
-        },
-      );
+      await axios.delete(requestUrl(`api/products/${bookId}`), {
+        'Content-Type': 'application/json',
+      });
     } catch (_) {
       return;
     }
@@ -60,14 +57,16 @@ const BookDetails = ({ book, books }) => {
 
 export const getStaticPaths = async () => {
   const { books } = await fetchAllBooks();
-  console.log(books)
+  console.log(books);
+  const paths = books.slice(0, 8).map((book) => ({
+    params: {
+      bookId: book._id.toString(),
+    },
+  }));
+  console.log(paths)
   return {
     fallback: 'blocking',
-    paths: books.slice(0,8).map((book) => ({
-      params: {
-        bookId: book._id.toString(),
-      },
-    })),
+    paths: paths,
   };
 };
 
