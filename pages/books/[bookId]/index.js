@@ -56,7 +56,6 @@ const BookDetails = ({ book, books }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { books } = await fetchAllBooks();
   const paths = [
     {
       params: {
