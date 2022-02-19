@@ -4,8 +4,13 @@ import { requestUrl } from '../../db/domain_url';
 
 export const fetchAllBooks = async () => {
   const response = await axios.get(requestUrl('api/products'));
-  const books =
-    response.data.products.map((book) =>
+  let books;
+  let totalBooks;
+  if (typeof response.data.products === 'undefined') {
+    books = [];
+    totalBooks = 0;
+  } else {
+    books = response.data.products.map((book) =>
       new Book(
         book._id,
         book.name,
@@ -15,8 +20,9 @@ export const fetchAllBooks = async () => {
         book.imageUrl,
         book.inventory.quantity,
       ).getBook(),
-    ) ?? [];
-  const totalBooks = response.data.totalQuantity;
+    );
+    totalBooks = response.data.totalQuantity;
+  }
   return { books, totalBooks };
 };
 
