@@ -13,6 +13,7 @@ import Head from 'next/head';
 const EditBook = ({ book }) => {
   const user = useSelector((state) => state.user);
   const router = useRouter();
+
   const isAuthenticated = isAuth();
 
   useEffect(() => {
@@ -20,6 +21,10 @@ const EditBook = ({ book }) => {
       router.replace('/auth');
     }
   }, [user, router, isAuthenticated]);
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <main>
       <Head>

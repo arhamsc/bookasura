@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import BookDetailsMain from '../../../components/Functional/BookDetails/BookDetailsMain/BookDetailsMain';
@@ -13,7 +14,13 @@ import {
 } from '../../../helpers/from-end/products_prop_funcs';
 
 const BookDetails = ({ book, books }) => {
+  const router = useRouter();
+
   const dispatch = useDispatch();
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
 
   const isAuthenticated = isAuth();
 
@@ -33,6 +40,7 @@ const BookDetails = ({ book, books }) => {
       return;
     }
   };
+
   return (
     <main>
       <Head>
