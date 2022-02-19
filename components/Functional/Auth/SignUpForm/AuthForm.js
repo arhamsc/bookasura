@@ -95,7 +95,6 @@ const AuthForm = ({ signupType, changeAuthTypeHandler }) => {
         );
       }
       const { data } = response;
-      console.log(data);
       dispatch(
         userAction.setUser({
           user: {
