@@ -57,13 +57,28 @@ const BookDetails = ({ book, books }) => {
 
 export const getStaticPaths = async () => {
   const { books } = await fetchAllBooks();
-  console.log(books);
-  const paths = books.slice(0, 8).map((book) => ({
-    params: {
-      bookId: book._id.toString(),
+  const paths = [
+    {
+      params: {
+        bookId: '620b6c0f011912456d453290',
+      },
     },
-  }));
-  console.log(paths)
+    {
+      params: {
+        bookId: '620b6c0f011912456d45328c',
+      },
+    },
+    {
+      params: {
+        bookId: '620b6c0f011912456d45329c',
+      },
+    },
+    {
+      params: {
+        bookId: '620b6c0f011912456d453288',
+      },
+    },
+  ];
   return {
     fallback: 'blocking',
     paths: paths,
