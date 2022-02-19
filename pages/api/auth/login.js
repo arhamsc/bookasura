@@ -29,7 +29,14 @@ const handler = async (req, res) => {
         });
         user.token = token;
         await user.save();
-        res.status(200).send({ url: '/', token, expiryTime });
+        res.status(200).send({
+          url: '/',
+          token,
+          expiryTime,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        });
       } catch (error) {
         errorHandler(res, error.message);
       }

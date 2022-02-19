@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useReducer, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userAction } from '../../../../context/context-slices/user-slice';
 import { requestUrl } from '../../../../db/domain_url';
 
 import styles from './AuthForm.module.css';
@@ -41,6 +43,8 @@ const AuthForm = ({ signupType, changeAuthTypeHandler }) => {
     cpassword: '',
   });
 
+  const dispatch = useDispatch();
+
   const signup = signupType === 'signup';
   const router = useRouter();
 
@@ -66,28 +70,41 @@ const AuthForm = ({ signupType, changeAuthTypeHandler }) => {
     setIsLoading(true);
     let response;
     try {
-      signup
-        ? (response = await axios.post(
-            requestUrl('api/auth/signup'),
-            {
-              name: formData.name,
-              password: formData.password,
-              email: formData.password,
-            },
-            {
-              'Content-Type': 'application/json',
-            },
-          ))
-        : (response = await axios.post(
-            requestUrl('api/auth/login'),
-            {
-              email: formData.email,
-              password: formData.password,
-            },
-            {
-              'Content-Type': 'application/json',
-            },
-          ));
+      if (signup) {
+        response = await axios.post(
+          requestUrl('api/auth/signup'),
+          {
+            name: formData.name,
+            password: formData.password,
+            email: formData.password,
+          },
+          {
+            'Content-Type': 'application/json',
+          },
+        );
+      } else {
+        response = await axios.post(
+          requestUrl('api/auth/login'),
+          {
+            email: formData.email,
+            password: formData.password,
+          },
+          {
+            'Content-Type': 'application/json',
+          },
+        );
+      }
+      const { data } = response;
+      console.log(data);
+      dispatch(
+        userAction.setUser({
+          user: {
+            name: data.name,
+            email: data.email,
+            role: data.role,
+          },
+        }),
+      );
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('expiryDate', Date.now() + response.data.expiryTime);
       const timer = setTimeout(Date.now() + response.data.expiryTime);

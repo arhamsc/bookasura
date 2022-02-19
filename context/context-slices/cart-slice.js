@@ -42,16 +42,22 @@ const cartSlice = createSlice({
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
-      state.subTotal = state.items
-        .map((item) => item.totalPrice)
-        .reduce((acc, curr) => acc + curr);
+      state.subTotal =
+        state.items.length > 0
+          ? state.items
+              .map((item) => item.totalPrice)
+              .reduce((acc, curr) => acc + curr)
+          : 0;
     },
     deleteCartItem(state, action) {
       const _id = action.payload;
       state.items = state.items.filter((item) => item._id !== _id);
-      state.subTotal = state.items
-        .map((item) => item.totalPrice)
-        .reduce((acc, curr) => acc + curr);
+      state.subTotal =
+        state.items.length > 0
+          ? state.items
+              .map((item) => item.totalPrice)
+              .reduce((acc, curr) => acc + curr)
+          : 0;
     },
     deleteFullCart(state) {
       state.items = [];

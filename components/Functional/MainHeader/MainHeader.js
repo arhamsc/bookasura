@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from './MainHeader.module.css';
 
-import { Search, ShoppingCartOutlined } from '@material-ui/icons';
+import { ShoppingCartOutlined } from '@material-ui/icons';
 import Image from 'next/image';
 import Logo from '../../../public/bookasura_logo.png';
 
 import { isAuth, logout } from '../../../helpers/from-end/is_auth';
+import { useDispatch } from 'react-redux';
+import { userAction } from '../../../context/context-slices/user-slice';
 
-const MainHeader = ({ showSearchHandler }) => {
+const MainHeader = () => {
   const router = useRouter();
   let isAuthenticated = isAuth();
+  const dispatch = useDispatch();
 
   const authPage = router.pathname.includes('auth');
 
@@ -23,6 +26,7 @@ const MainHeader = ({ showSearchHandler }) => {
 
     if (authType === 'logout') {
       logout();
+      dispatch(userAction.logoutUser());
       router.replace('/');
     }
     return;
@@ -45,11 +49,7 @@ const MainHeader = ({ showSearchHandler }) => {
   return (
     <header className={styles.header}>
       <div className={styles.logo__div}>
-        {!authPage ? (
-          <Search className={styles.icon} onClick={showSearchHandler} />
-        ) : (
-          <div></div>
-        )}
+        <div></div>
         <Image
           src={Logo}
           alt="Booksasura_Logo"

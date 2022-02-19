@@ -1,15 +1,32 @@
+import { DeleteOutline, Router } from '@material-ui/icons';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import styles from './BookDetailsMain.module.css';
-const BookDetailsMain = ({ book, onAddToCartHandler, canAddToCart }) => {
+const BookDetailsMain = ({
+  book,
+  onAddToCartHandler,
+  canAddToCart,
+  onDeleteHandler,
+}) => {
   const soldOut = book.inventory <= 0;
   const [showModal, setShowModal] = useState(false);
   const [modalText, setModalText] = useState('');
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const user = useSelector((state) => state.user);
+  const router = useRouter();
+
+  const isAdmin = user.role === 'admin';
+
   const buttonClickHandler = () => {
     setShowModal(true);
     if (!canAddToCart) {
       setModalText('You Have to Login!!!!');
+      return;
     } else {
       setModalText('Added to Cart');
       onAddToCartHandler({
@@ -21,9 +38,25 @@ const BookDetailsMain = ({ book, onAddToCartHandler, canAddToCart }) => {
     }
   };
 
+  const editButtonHandler = () => {
+    router.push(`/books/edit/${book._id}`);
+  };
+
+  const showDeleteModal = () => {
+    setDeleteModal(true);
+  };
+
   const closeModalHandler = () => {
     setShowModal(false);
   };
+
+  const deleteButtonHandler = async () => {
+    setIsLoading(true);
+    await onDeleteHandler(book._id);
+    router.replace('/');
+    setIsLoading(false);
+  };
+
   return (
     <section className={styles.book__details__main}>
       {/* Image */}
@@ -51,6 +84,27 @@ const BookDetailsMain = ({ book, onAddToCartHandler, canAddToCart }) => {
             {soldOut ? 'Sold Out' : 'Add to Cart'}
           </button>
         </div>
+        {canAddToCart && isAdmin && (
+          <>
+            <div className={styles.add__to__cart__button}>
+              <button onClick={editButtonHandler}>{'Edit'}</button>
+            </div>
+            <div className={styles.add__to__cart__button}>
+              <button
+                style={{
+                  color: 'red',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onClick={showDeleteModal}
+              >
+                {'Delete'}
+                <DeleteOutline />
+              </button>
+            </div>
+          </>
+        )}
         {/* Description */}
         <div className={styles.description}>
           <p>{book.description}</p>
@@ -60,7 +114,29 @@ const BookDetailsMain = ({ book, onAddToCartHandler, canAddToCart }) => {
       {showModal && (
         <div className={styles.modal}>
           <button onClick={closeModalHandler}>X</button>
-          <p>{modalText}</p>
+          <p
+            className={canAddToCart ? styles.addToCart : styles.cannotAddToCart}
+          >
+            {modalText}
+          </p>
+        </div>
+      )}
+      {deleteModal && (
+        <div className={styles.modal}>
+          <button onClick={() => setDeleteModal(false)}>X</button>
+          <p
+            style={{
+              color: 'red',
+            }}
+          >
+            {'Deleting the Item'}
+          </p>
+          <button
+            className={styles.delete__confirm}
+            onClick={deleteButtonHandler}
+          >
+            {isLoading ? 'Loading ...' : 'Delete'}
+          </button>
         </div>
       )}
     </section>

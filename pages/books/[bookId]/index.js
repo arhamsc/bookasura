@@ -1,8 +1,11 @@
+import axios from 'axios';
+import Head from 'next/head';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import BookDetailsMain from '../../../components/Functional/BookDetails/BookDetailsMain/BookDetailsMain';
 import InterestedBooks from '../../../components/Functional/BookDetails/InterestedBooks/InterestedBooks';
 import { cartActions } from '../../../context/context-slices/cart-slice';
+import { requestUrl } from '../../../db/domain_url';
 import { isAuth } from '../../../helpers/from-end/is_auth';
 import {
   fetchAllBooks,
@@ -20,12 +23,30 @@ const BookDetails = ({ book, books }) => {
     }
     dispatch(cartActions.addItemToCart(cartItem));
   };
+
+  const deleteBookHandler = async (bookId) => {
+    try {
+      await axios.delete(
+        requestUrl(`api/products/${bookId}`),
+        {
+          'Content-Type': 'application/json',
+        },
+      );
+    } catch (_) {
+      return;
+    }
+  };
   return (
     <main>
+      <Head>
+        <title>{book.name}</title>
+        <meta name="description" content={book.description} />
+      </Head>
       <BookDetailsMain
         book={book}
         onAddToCartHandler={onAddToCartHandler}
         canAddToCart={isAuthenticated}
+        onDeleteHandler={deleteBookHandler}
       />
       <InterestedBooks books={books} />
       <div
@@ -51,6 +72,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { bookId } = context.params;
+
   const book = await fetchOneBook(bookId);
   const { books } = await fetchAllBooks();
   return {

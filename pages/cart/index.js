@@ -10,6 +10,7 @@ import { requestUrl } from '../../db/domain_url';
 import { useRouter } from 'next/router';
 
 import { isAuth } from '../../helpers/from-end/is_auth.js';
+import Head from 'next/head';
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,10 @@ const CartPage = () => {
     );
   return (
     <main>
+      <Head>
+        <title>Your Cart</title>
+        <meta name="description" content="Bookasura Cart" />
+      </Head>
       <CartHeading />
       {cartListContent}
       <CartSubTotal subTotal={subTotal} onCheckOutHandler={onCheckout} />

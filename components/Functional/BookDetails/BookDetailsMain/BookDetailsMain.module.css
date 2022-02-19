@@ -9,14 +9,13 @@
 .image__div {
   position: relative;
   width: 90%;
-  
 }
 
 .image {
   border-radius: 1rem;
 }
 
-.name__price > p{
+.name__price > p {
   font-size: 2rem;
   color: var(--dark-text);
   margin: 0;
@@ -43,12 +42,16 @@
   font-weight: 300;
 }
 
+.add__to__cart__button {
+  padding-bottom: 1rem;
+}
+
 .add__to__cart__button button {
   width: 100%;
   background: var(--linear-grad);
   border: 1px solid #283618;
   padding: 1rem 0;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-size: 1.1rem;
   font-family: inherit;
   color: var(--dark-text);
@@ -75,19 +78,38 @@
   left: 50%;
   transform: translateX(-50%);
   background: var(--linear-grad);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   width: 80%;
   text-align: center;
+  border: 2px solid;
 }
 
-.modal > button {
+.modal > button:first-child {
   position: absolute;
   right: 1rem;
-  top: .5rem;
+  top: 0.5rem;
   background: none;
   border: none;
 }
 
 .modal > button:hover {
   cursor: pointer;
+}
+
+.canAddToCart {
+  color: inherit;
+}
+
+.cannotAddToCart {
+  color: red;
+}
+
+.delete__confirm {
+  background: #ff00008a;
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: .2rem;
+  margin-bottom: 1rem;
+  font-style: inherit;
+  color: var(--secondary-white);
 }

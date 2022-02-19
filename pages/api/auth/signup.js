@@ -4,7 +4,6 @@ import dbConnect from '../../../db/dbConnect';
 import errorHandler from '../../../helpers/api/error_handler';
 import { hash } from 'bcrypt';
 
-
 const expiryTime = 86400000;
 
 const handler = async (req, res) => {
@@ -14,16 +13,24 @@ const handler = async (req, res) => {
   switch (method) {
     case 'POST': {
       try {
-        const { password, email, name } = req.body;
-        const newUser = new User({ name, email });
+        const { password, email, name, role = 'customer' } = req.body;
+        const newUser = new User({ name, email, role });
         const token = sign(newUser.toJSON(), process.env.TOKEN_SECRET, {
           expiresIn: '1d',
         });
-       newUser.password = await hash(password, 12);
+        newUser.password = await hash(password, 12);
         newUser.token = token;
         await newUser.save();
-        console.log(newUser);
-        res.status(200).send({ url: '/', token, expiryTime });
+        res
+          .status(200)
+          .send({
+            url: '/',
+            token,
+            expiryTime,
+            name: newUser.name,
+            email: newUser.email,
+            role: newUser.role,
+          });
       } catch (error) {
         errorHandler(res, error.message);
       }

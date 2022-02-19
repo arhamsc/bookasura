@@ -33,6 +33,7 @@
 .contact__form__div textarea:focus {
   outline-color: var(--dark-text);
 }
+
 .contact__form__div textarea {
   resize: none;
 }

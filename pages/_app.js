@@ -5,10 +5,14 @@ import Layout from '../components/Functional/Layout/Layout';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import store from '../context';
+import { PersistGate } from 'redux-persist/integration/react';
+import {persistStore} from 'redux-persist'
 
 function MyApp({ Component, pageProps }) {
+  let persistor = persistStore(store);
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}></PersistGate>
       <Layout>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
