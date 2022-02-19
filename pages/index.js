@@ -39,6 +39,7 @@ export default function Home({ popularBooks }) {
       </Head>
       <main>
         <Banner />
+        <ProductShowcase popularBooks={popularBooks} />
         <Quote />
         <CategoryNavigation />
       </main>
@@ -46,4 +47,30 @@ export default function Home({ popularBooks }) {
   );
 }
 
+export const getServerSideProps = async () => {
+  await dbConnect();
 
+  const products = await Product.find({})
+    .populate({
+      path: 'category',
+      model: Category,
+      select: { _id: 1, name: 1 },
+    })
+    .populate({
+      path: 'inventory',
+      model: Inventory,
+      select: { _id: 1, quantity: 1 },
+    });
+
+  const books = JSON.parse(JSON.stringify(products));
+
+  // const { books } = await fetchAllBooks();
+  const popularBooks = getRandom(books, 4);
+
+  return {
+    props: {
+      popularBooks,
+      books,
+    },
+  };
+};
